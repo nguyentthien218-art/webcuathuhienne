@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Góc Tâm Đắc - Hoa Đào Rơi</title>
+    <style>
+        :root {
+            --pink-light: #ffe4e1;
+            --pink-dark: #ffb6c1;
+            --text-color: #5d4037;
+            --accent-pink: #d81b60;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #fff0f5, var(--pink-light));
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Nút Quay lại trang chủ */
+        .back-home {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--accent-pink);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--pink-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-home:hover {
+            background: var(--accent-pink);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Dòng tiêu đề đặc biệt */
+        .special-quote {
+            text-align: center;
+            padding: 60px 20px 30px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-pink);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        /* Container chứa 8 block */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Block câu nói */
+        .quote-block {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--pink-dark);
+            box-shadow: 0 8px 15px rgba(216, 27, 96, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 150px;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .quote-block:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 20px rgba(216, 27, 96, 0.2);
+        }
+
+        /* Hiệu ứng hoa đào rơi */
+        .sakura {
+            position: fixed;
+            top: -10%;
+            z-index: 1;
+            user-select: none;
+            pointer-events: none;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 100%; transform: translateX(100px) rotate(360deg); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="special-quote">
+        🌸 Những câu nói mình tâm đắc 🌸
+    </div>
+
+    <div class="container">
+        <div class="quote-block">“Đừng bị mắc kẹt trong giấc mơ của người khác.”
+        – V</div>
+        <div class="quote-block">"Mọi chuyện rồi sẽ ổn thôi, nếu chưa ổn, thì chưa phải cuối cùng."</div>
+        <div class="quote-block">"Đừng so sánh chương 1 của mình với chương 20 của người khác."</div>
+        <div class="quote-block">"Cách tốt nhất để dự đoán tương lai là tự mình tạo ra nó."</div>
+        <div class="quote-block">"Hãy sống như một đóa hoa, tự ngát hương vì bản thân trước tiên."</div>
+        <div class="quote-block">"Mỗi vết sẹo đều là một bài học, hãy tự hào vì bạn đã vượt qua."</div>
+        <div class="quote-block">"Sự kiên nhẫn là chìa khóa cuối cùng mở được mọi cánh cửa thành công."</div>
+        <div class="quote-block">"Bạn không cần phải hoàn hảo để bắt đầu, nhưng phải bắt đầu để trở nên hoàn hảo."</div>
+         <a href="trangchu.html" class="back-home">
+         Quay lại trang chủ
+    </a>
+    </div>
+
+       <script>
+        function createSakura() {
+            const sakura = document.createElement('div');
+            sakura.className = 'sakura';
+            sakura.innerHTML = '🌸';
+            sakura.style.left = Math.random() * 100 + 'vw';
+            sakura.style.fontSize = Math.random() * 10 + 10 + 'px';
+            sakura.style.opacity = Math.random();
+            sakura.style.animationDuration = Math.random() * 3 + 4 + 's';
+            document.body.appendChild(sakura);
+            setTimeout(() => { sakura.remove(); }, 7000);
+        }
+        setInterval(createSakura, 300);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Sở thích của tôi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom, #ffd6e7, #ffb6d9);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff2e7a;
+            font-size: clamp(24px, 8vw, 40px); /* Tự động co giãn font chữ */
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #a60045;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .block {
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .block h2 { color: #ff2e7a; border-bottom: 2px solid #ffeef5; padding-bottom: 10px; }
+
+        /* Grid hệ thống: 2 cột trên máy tính, 1 cột trên điện thoại */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        figure {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Khung chứa ảnh để cố định tỷ lệ */
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 4 / 3; /* Cố định tỷ lệ khung hình 4:3 */
+            overflow: hidden;
+            border-radius: 15px;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            /* Thay 'cover' bằng 'contain' nếu bạn muốn thấy toàn bộ ảnh không mất góc nào */
+            /* Hoặc giữ 'cover' nếu muốn ảnh luôn lấp đầy khung nhưng không méo */
+            object-fit: cover; 
+            transition: transform 0.3s ease;
+        }
+
+        figure:hover img {
+            transform: scale(1.05);
+        }
+
+        figcaption {
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #444;
+            text-align: center;
+        }
+
+        /* Đặc biệt cho ảnh Idol */
+        .idol-wrapper {
+            aspect-ratio: auto; /* Để ảnh Idol hiển thị theo kích thước tự nhiên */
+            max-height: 500px;
+        }
+
+        .idol-img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 20px;
+        }
+
+        audio { width: 100%; margin-top: 15px; }
+
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            background: linear-gradient(45deg, #ff2e7a, #ff6fa5);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .button:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+            background: white;
+            color: #ff2e7a;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Hiệu ứng Sakura */
+        .sakura {
+            position: fixed;
+            top: -10px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) translateX(100px) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>🌸 SỞ THÍCH CỦA TÔI 🌸</h1>
+<p class="subtitle">Những điều mình yêu thích nhất ✨</p>
+
+<div class="container">
+
+    <div class="block">
+        <h2>📖 Việc làm khi rảnh rỗi</h2>
+        <div class="grid-layout">
+            <figure>
+                <div class="img-wrapper"><img src="a/arr.jpg" alt="Nấu ăn"></div>
+                <figcaption>Nấu ăn</figcaption>
+            </figure>
+            <figure>
+                <div class="img-wrapper"><img src="a/ar2.jpg" alt="Học bài"></div>
+                <figcaption>Học bài</figcaption>
+            </figure>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>🎬 Phim yêu thích</h2>
+        <div class="grid-layout">
+            <figure>
+                <div class="img-wrapper"><img src="a/aap1.jpg" alt="Hospital playlist"></div>
+                <figcaption>Hospital Playlist</figcaption>
+                <a href="https://share.google/fuQDlp2akb34ljliv" class="button">Tìm hiểu thêm</a>
+            </figure>
+            <figure>
+                <div class="img-wrapper"><img src="a/ap2.jpg" alt="Goodboy"></div>
+                <figcaption>Good Boy</figcaption>
+                <a href="https://share.google/ttHIyIQOyUEdciour" class="button">Tìm hiểu thêm</a>
+            </figure>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>🎭 Diễn viên yêu thích</h2>
+        <div class="grid-layout">
+            <figure>
+                <div class="img-wrapper"><img src="a/aaadv1.jpg" alt="Park Bo-Gum"></div>
+                <figcaption>Park Bo-Gum</figcaption>
+                <a href="https://share.google/nrNKuQaYzpliqAvL8" class="button">Thông tin BoGum</a>
+            </figure>
+            <figure>
+                <div class="img-wrapper"><img src="a/adv2.jpg" alt="Hwang Min-Hyun"></div>
+                <figcaption>Hwang Min-Hyun</figcaption>
+                <a href="https://share.google/mOF1YI9DmaECr1ez4" class="button">Thông tin Min-Hyun</a>
+            </figure>
+        </div>
+    </div>
+
+    <div class="block">
+        <h2>🎵 Âm nhạc yêu thích</h2>
+        <figure style="width: 100%;">
+            <div class="img-wrapper" style="aspect-ratio: 16/9;">
+                <img src="a/aanha1.jpg" alt="Music">
+            </div>
+            <figcaption>Âm nhạc tạo động lực cho mình mỗi ngày</figcaption>
+        </figure>
+        <audio controls>
+            <source src="a/mp1.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <div class="block">
+        <h2>⭐ Idol yêu thích</h2>
+        <figure>
+            <img src="a/aid.jpg" class="idol-img" alt="Tempest">
+            <figcaption>Nhóm nhạc Tempest</figcaption>
+        </figure>
+
+        <div style="margin-top:20px; border-radius:15px; overflow:hidden; background: #000;">
+            <video width="100%" height="auto" controls poster="a/aid.jpg">
+                <source src="a/vd1.mp4" type="video/mp4">
+                </video>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a class="button" style="padding: 12px 25px;" href="https://share.google/Hprk9zJR4kcR00a9T" target="_blank">Tìm hiểu thêm về Tempest</a>
+        </div>
+    </div>
+    <a class="back" href="trangchu.html">← Quay lại trang chủ</a>
+
+</div>
+
+<script>
+    function createSakura() {
+        const sakura = document.createElement("div");
+        sakura.classList.add("sakura");
+        sakura.innerHTML = "🌸";
+        sakura.style.left = Math.random() * 100 + "vw";
+        sakura.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        sakura.style.fontSize = (Math.random() * 10 + 10) + "px";
+        sakura.style.opacity = Math.random();
+        document.body.appendChild(sakura);
+        
+        setTimeout(() => {
+            sakura.remove();
+        }, 6000);
+    }
+    setInterval(createSakura, 400);
+</script>
+
+</body>
+</html>

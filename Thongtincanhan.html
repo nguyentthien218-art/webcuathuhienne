@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thông tin cá nhân</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffe6ee, #ffd6e7);
+    min-height: 100vh;
+}
+
+/* Khung chính */
+.container {
+    max-width: 800px;
+    margin: 80px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 10; /* Để khung nằm trên hoa */
+}
+
+h1 {
+    text-align: center;
+    color: #ff4d88;
+    margin-bottom: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-box {
+    background: #ffe6ee;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.info-box span {
+    display: block;
+    font-size: 13px;
+    color: #ff4d88;
+    margin-bottom: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.info-box:hover {
+    transform: translateY(-6px);
+}
+
+/* PHẦN BIỂU TƯỢNG MẠNG XÃ HỘI MỚI THÊM */
+.social-list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.social-item {
+    font-size: 35px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.fa-facebook { color: #1877F2; }
+.fa-envelope { color: #EA4335; }
+.social-item img { width: 35px; height: 35px; vertical-align: middle; }
+
+.social-item:hover { transform: scale(1.2); }
+
+/* Nút quay lại */
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 35px;
+    color: #ff4d88;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* POPUP CHUNG */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    display: none;
+    z-index: 1000;
+}
+
+.popup iframe, .popup img {
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    text-align: right;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+
+/* HIỆU ỨNG HOA RƠI */
+.flower {
+    position: fixed;
+    top: -20px;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(105vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Thông tin cá nhân 💖</h1>
+
+    <div class="info-grid">
+        <div class="info-box"><span>Họ tên</span>Nguyễn Thị Thu Hiền</div>
+        <div class="info-box"><span>Ngày sinh</span>01/08/2008</div>
+        <div class="info-box"><span>Lớp</span>12A3</div>
+        <div class="info-box" onclick="openSchool()"><span>Trường</span>THPT TÂY SƠN</div>
+        <div class="info-box" onclick="openMap()"><span>Địa chỉ nhà</span>An Vinh 1 - Bình An - Gia Lai</div>
+        <div class="info-box"><span>Email</span>7empestchicoie@gmail.com</div>
+    </div>
+
+    <div class="social-list">
+        <a href="https://www.facebook.com/share/1CRqXd6Hue/?mibextid=wwXIfr" target="_blank" class="social-item"><i class="fab fa-facebook"></i></a>
+        
+        <a href="https://zalo.me/0862687537" target="_blank" class="social-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg">
+        </a>
+        
+        <a href="mailto:7empestchicoie@gmail.com" class="social-item"><i class="fas fa-envelope"></i></a>
+    </div>
+
+    <a class="back" href="index.html">← Quay lại trang chủ</a>
+</div>
+
+<div class="popup" id="mapPopup">
+    <div class="close-btn" onclick="closePopup('mapPopup')">✖</div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3872.793483644593!2d109.00666137509323!3d13.911288786497392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTPCsDU0JzQwLjYiTiAxMDnCsDAwJzMzLjMiRQ!5e0!3m2!1svi!2s!4v1769909989936!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</div>
+
+<div class="popup" id="schoolPopup">
+    <div class="close-btn" onclick="closePopup('schoolPopup')">✖</div>
+    <img src="a/a7.jpg" alt="Trường học">
+</div>
+
+<script>
+function openMap() { document.getElementById("mapPopup").style.display = "block"; }
+function openSchool() { document.getElementById("schoolPopup").style.display = "block"; }
+function closePopup(id) { document.getElementById(id).style.display = "none"; }
+
+// Hàm tạo hoa rơi mượt mà
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    flower.style.fontSize = (Math.random() * 10 + 15) + "px";
+    document.body.appendChild(flower);
+    setTimeout(() => { flower.remove(); }, 6000);
+}
+setInterval(createFlower, 400);
+</script>
+
+</body>
+</html>

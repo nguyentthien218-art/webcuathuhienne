@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trang Cá Nhân</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff5f7;
+    color: #444;
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,182,193,0.6);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+}
+
+nav a {
+    margin: 0 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+nav a:hover { text-decoration: underline; }
+
+/* BANNER */
+.banner {
+    height: 100vh;
+    background: linear-gradient(rgba(255,192,203,0.4), rgba(255,182,193,0.4)),
+                url("https://images.unsplash.com/photo-1492724441997-5dc865305da7") center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.quote { font-size: 28px; font-weight: bold; }
+
+/* SECTION BLOCK */
+.section {
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    max-width: 900px;
+    border-radius: 15px;
+    border: 3px solid #ffb6c1;
+    box-shadow: 0 8px 20px rgba(255,182,193,0.3);
+}
+.section h2 {
+    text-align: center;
+    color: #d63384;
+}
+
+/* WELCOME */
+.welcome-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #fff0f5;
+    color: #d63384;
+    padding: 15px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    display: none;
+}
+
+/* SAO RƠI */
+#stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+/* KHUNG */
+.logo-flow{
+  overflow:hidden;
+  white-space:nowrap;
+  background:#ffe6ef;
+  padding:30px 0;
+}
+
+/* DẢI ẢNH */
+.flow-track{
+  display:inline-flex;
+  animation:flow 25s linear infinite;
+}
+
+/* ẢNH */
+.flow-track img{
+  width:240px;
+  height:160px;
+  object-fit:cover;
+  margin:0 15px;
+  border-radius:18px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* CHUYỂN ĐỘNG */
+@keyframes flow{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌸 Web của ThuHien</div>
+    <nav>
+        <a href="Thongtincanhan.html">Thông tin cá nhân</a>
+        <a href="sothich.html">Sở thích</a>
+        <a href="#">Những câu nói mình tâm đắc</a>
+        <a href="muctieu.html">Kỷ niệm & mục tiêu</a>
+    </nav>
+</header>
+
+<section class="banner">
+    <div class="quote">" We stepped over the line and finally remembered who we were. The line was never meant to hold anyone."</div>
+</section>
+<section class="logo-flow">
+    <h2>Khoảnh khắc của mình ✨</h2>
+</section>
+<section class="logo-flow">
+  <div class="flow-track">
+    <img src="a/a1.jpg">
+    <img src="a/a2.jpg">
+    <img src="a/a3.jpg">
+    <img src="a/a4.jpg">
+    <img src="a/a5.jpg">
+
+    <!-- Lặp lại -->
+    <img src="a/a1.jpg">
+    <img src="a/a2.jpg">
+    <img src="a/a3.jpg">
+    <img src="a/a4.jpg">
+    <img src="a/a5.jpg">
+  </div>
+</section>
+<div class="section">
+    <h2>👤 Một chút giới thiệu bản thân</h2>
+    <p>Mình là Thu Hiền.Mình là người yêu sự nhẹ nhàng và luôn cố gắng hoàn thiện bản thân mỗi ngày. Mình thích học hỏi điều mới, khám phá thế giới theo cách riêng và lưu giữ những khoảnh khắc đẹp trong cuộc sống. Với mình, sự chân thành và tích cực luôn là điều quan trọng nhất. ✨ </p>
+</div>
+
+
+
+<div class="welcome-box" id="welcome">Chào mừng bạn đến với trang của mình 💗</div>
+<canvas id="stars"></canvas>
+
+<script>
+window.onload = () => {
+    setTimeout(() => {
+        document.getElementById("welcome").style.display = "block";
+    }, 800);
+};
+
+/* SAO HỒNG RƠI */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Star {
+    constructor(){ this.reset(); }
+    reset(){
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*-canvas.height;
+        this.size = Math.random()*3+2;
+        this.speed = Math.random()*0.5+0.2;
+    }
+    update(){
+        this.y += this.speed;
+        if(this.y > canvas.height) this.reset();
+    }
+    draw(){
+        ctx.fillStyle = "pink";
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+        ctx.fill();
+    }
+}
+
+let stars=[];
+for(let i=0;i<80;i++) stars.push(new Star());
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    stars.forEach(s=>{s.update();s.draw();});
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
